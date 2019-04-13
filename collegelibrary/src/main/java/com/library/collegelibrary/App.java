@@ -2,7 +2,7 @@ package com.library.collegelibrary;
 
 /**
  * Hello world!
- *
+ *Second project
  */
 public class App 
 {
