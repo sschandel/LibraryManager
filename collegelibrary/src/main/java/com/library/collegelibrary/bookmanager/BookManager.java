@@ -9,9 +9,19 @@ import com.library.collegelibrary.books.Book;
 
 public class BookManager {
 	
-	private LinkedList<Book> bookList = new LinkedList<Book>();
+	//private static BookManager obj = null;
+	private BookManager() {};
+	/*public static BookManager objectCreationMethod(){
+		
+		if(obj==null){
+		    obj= new BookManager();
+		}
+	        return obj;
+	   }
+	*/
+	private static LinkedList<Book> bookList = new LinkedList<Book>();
 	
-	public void init() {
+	public static void init() {
 		
 		Book b1 = new Book();
 		
@@ -74,7 +84,7 @@ public class BookManager {
 		bookList.addLast(b5);
 	}
 	
-	public void entry() throws IOException {
+	public static void entry() throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		Book bNew = new Book();
 		
@@ -95,66 +105,75 @@ public class BookManager {
 		bNew.setBookSubject(br.readLine());
 		bookList.addLast(bNew);
 	}
-	public void remove(int index) {
+	public static void remove(int index) {
 		bookList.remove(index);
 	}
-	public int searchByID(Book bookId) {
-		return bookList.indexOf(bookId);
-		
+	public static int searchByID(int bookId) {		
+		for(Book bookSearch : BookManager.bookList) {
+			if(bookSearch.getBookID() == bookId) {
+				return bookList.indexOf(bookSearch);				
+			}
+		}	
+		return 0;
 	}
-	public int searchByName(Book bookName) {
-		return bookList.indexOf(bookName);
+	public static int searchByName(String bookName) {
+		for(Book bookSearch1 : BookManager.bookList) {
+			if(bookSearch1.getBookName().equals(bookName)) {
+				return bookList.indexOf(bookSearch1);
+			}
+		}
+		return 0;
 	}
 
 public static void main(String[] args) throws IOException {
 		
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-			BookManager bm = new BookManager();
 			
-			bm.init();
+			BookManager.init();
 			int j = 0;
 			System.out.println("BookLists : ");
 			
-			for(Book b : bm.bookList) {
+			for(Book b : BookManager.bookList) {
 				System.out.println(j+". "+b);
 				j++;
 			}
 			System.out.println("Enter new Book");
-			bm.entry();
+			BookManager.entry();
 			System.out.println("BookLists : ");
 			j=0;
-			for(Book b : bm.bookList) {
+			for(Book b : BookManager.bookList) {
 				System.out.println(j+". "+b);
 				j++;
 			}
 			System.out.println("Remove Book");
 			System.out.println("enter book index: ");
 			int index = Integer.parseInt(br.readLine());
-			bm.remove(index);
+			BookManager.remove(index);
 			System.out.println("BookLists : ");
 			j=0;
-			for(Book b : bm.bookList) {
+			for(Book b :BookManager.bookList) {
 				System.out.println(j+". "+b);
 				j++;
 			}
 			System.out.println("Search book by ID: ");
 			System.out.println("Enter book ID: ");
 			int p = Integer.parseInt(br.readLine());
-			for(Book bookSearch : bm.bookList) {
-				if(bookSearch.getBookID() == p) {
-					int a = bm.searchByID(bookSearch);
-					System.out.println("INDEX : "+a);
-				}
+			int a = BookManager.searchByID(p);
+			if(a != 0) {
+				System.out.println("INDEX = "+a);
+			}else {
+				System.out.println("NOT FOUND");
 			}
 			
 			System.out.println("Search book by name: ");
 			System.out.println("Enter book name: ");
 			String q =br.readLine();
-			for(Book bookSearch1 : bm.bookList) {
-				if(bookSearch1.getBookName().equals(q)) {
-					int b = bm.searchByName(bookSearch1);
-					System.out.println("INDEX : "+b);
-				}
+			int b = BookManager.searchByName(q);
+			if(b != 0) {
+				System.out.println("INDEX = "+b);
+			}else {
+				System.out.println("NOT FOUND");
 			}
+			
 	}
 }
