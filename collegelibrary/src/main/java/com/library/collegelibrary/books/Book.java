@@ -54,8 +54,8 @@ public class Book {
 	}
 	@Override
 	public String toString() {
-		return "Book\n[bookName=" + bookName + ",\nbPublisher=" + bPublisher + ",\nbWriter=" + bWriter + ",\nbId=" + bId
-				+ ",\nnoOfPage=" + noOfPage + ",\nbPrice=" + bPrice + ",\nbookSubject=" + bookSubject + "]\n";
+		return "Book\n[Book Name=" + bookName + ",\nbPublisher=" + bPublisher + ",\nbWriter=" + bWriter + ",\nBook Id=" + bId
+				+ ",\nNo. Of Page=" + noOfPage + ",\nbPrice=" + bPrice + ",\nBook Subject=" + bookSubject + "]\n";
 	}
 	
 }
