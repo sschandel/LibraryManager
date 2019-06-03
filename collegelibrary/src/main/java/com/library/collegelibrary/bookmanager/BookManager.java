@@ -109,22 +109,19 @@ public class BookManager {
 		bookList.remove(index);
 	}
 	public static Book searchByID(int bookId) {		
-		int x=0;
 		for(Book bookSearch : BookManager.bookList) {
 			if(bookSearch.getBookID() == bookId) {
-				return bookList.get(x);
+				//return bookList.get(x);
+				return bookSearch;
 			}
-			x++;
 		}	
 		return null;
 	}
 	public static Book searchByName(String bookName) {
-		int y=0;
 		for(Book bookSearch1 : BookManager.bookList) {
 			if(bookSearch1.getBookName().equals(bookName)) {
-				return bookList.get(y);
+				return bookSearch1;
 			}
-			y++;
 		}
 		return null;
 	}
