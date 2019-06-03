@@ -10,10 +10,10 @@ import com.library.collegelibrary.books.Book;
 public class BookManager {
 	
 	//private static BookManager obj = null;
-	private BookManager() {};
+	private BookManager() {};                      //private constructor
 	/*public static BookManager objectCreationMethod(){
 		
-		if(obj==null){
+		if(obj==null){                                                 //Singleton Design Pattern
 		    obj= new BookManager();
 		}
 	        return obj;
@@ -109,18 +109,22 @@ public class BookManager {
 		bookList.remove(index);
 	}
 	public static Book searchByID(int bookId) {		
+		int x=0;
 		for(Book bookSearch : BookManager.bookList) {
 			if(bookSearch.getBookID() == bookId) {
-				return bookList.get(bookList.indexOf(bookSearch));
+				return bookList.get(x);
 			}
+			x++;
 		}	
 		return null;
 	}
 	public static Book searchByName(String bookName) {
+		int y=0;
 		for(Book bookSearch1 : BookManager.bookList) {
 			if(bookSearch1.getBookName().equals(bookName)) {
-				return bookList.get(bookList.indexOf(bookSearch1));
+				return bookList.get(y);
 			}
+			y++;
 		}
 		return null;
 	}
