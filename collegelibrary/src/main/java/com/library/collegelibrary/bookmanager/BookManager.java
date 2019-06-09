@@ -126,7 +126,7 @@ public class BookManager {
 		return null;
 	}
 
-public static void main(String[] args) throws IOException {
+public static void main(String[] args) throws IOException, ClassNotFoundException {
 		
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 			
